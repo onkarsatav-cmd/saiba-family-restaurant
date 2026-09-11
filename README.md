@@ -24,24 +24,6 @@ In front of Bank of Baroda, Pirangut, Tal. Mulshi, Dist. Pune – 412115
 - Reception: 24 Hours
 
 
-## Technologies
-
-- HTML5
-- CSS3
-- JavaScript
-- Google Fonts
-- Google Maps
-- Unsplash images
-
-## Project Structure
-
-```text
-saiba-family-resto/
-├── index.html
-└── README.md
-```
-
-
 
 
 
