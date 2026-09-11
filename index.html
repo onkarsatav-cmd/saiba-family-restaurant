@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saiba Family Resto, Bar & Lodging – Pirangut, Pune</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9933A;
+    --gold-light: #E8BA6A;
+    --gold-pale: #F5E6C8;
+    --deep: #1A0E05;
+    --bark: #2E1A0E;
+    --cream: #FAF6EF;
+    --warm: #F2EAD8;
+    --rust: #8B3A1C;
+    --sage: #4A5E3A;
+    --text: #2E1A0E;
+    --muted: #7A6250;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1rem 3rem;
+    background: rgba(26,14,5,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,147,58,0.3);
+    transition: background 0.3s;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--gold-light);
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+  }
+  .nav-logo span { font-size: 0.75rem; display: block; color: var(--gold-pale); letter-spacing: 0.15em; font-weight: 300; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: rgba(245,230,200,0.8); text-decoration: none;
+    font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-cta {
+    background: var(--gold); color: var(--deep); padding: 0.5rem 1.4rem;
+    border-radius: 2px; font-size: 0.78rem; letter-spacing: 0.1em;
+    text-transform: uppercase; font-weight: 600; cursor: pointer; border: none;
+    text-decoration: none; transition: background 0.3s;
+  }
+  .nav-cta:hover { background: var(--gold-light); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: var(--gold-light); display: block; transition: 0.3s; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex; align-items: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #1A0E05 0%, #2E1A0E 40%, #4A2E1A 70%, #1A0E05 100%);
+  }
+  .hero-pattern {
+    position: absolute; inset: 0; opacity: 0.06;
+    background-image: radial-gradient(circle at 2px 2px, var(--gold) 1px, transparent 0);
+    background-size: 32px 32px;
+  }
+  .hero-img-collage {
+    position: absolute; right: 0; top: 0; bottom: 0; width: 55%;
+    display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr;
+    gap: 4px; overflow: hidden; opacity: 0.65;
+  }
+  .hero-img-collage .img-cell {
+    overflow: hidden; position: relative;
+  }
+  .hero-img-collage .img-cell img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 8s ease;
+  }
+  .hero-img-collage .img-cell:hover img { transform: scale(1.05); }
+  .hero-img-collage .img-cell:first-child { grid-row: span 2; }
+  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(26,14,5,1) 30%, rgba(26,14,5,0.4) 65%, rgba(26,14,5,0.2) 100%); }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 3rem;
+    max-width: 700px;
+    animation: heroIn 1.2s cubic-bezier(0.22,1,0.36,1) both;
+  }
+  @keyframes heroIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(201,147,58,0.15); border: 1px solid rgba(201,147,58,0.4);
+    color: var(--gold-light); padding: 0.4rem 1rem;
+    border-radius: 2px; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .hero-badge::before { content: '✦'; font-size: 0.6rem; }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    font-weight: 700; color: #fff; line-height: 1.05;
+    margin-bottom: 0.5rem;
+  }
+  .hero h1 em { color: var(--gold-light); font-style: italic; }
+  .hero-tagline {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: rgba(245,230,200,0.8); font-weight: 300; font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    margin-bottom: 2rem; line-height: 1.5;
+  }
+  .hero-divider { width: 60px; height: 2px; background: var(--gold); margin-bottom: 2rem; }
+  .hero-desc { color: rgba(245,230,200,0.65); font-size: 0.9rem; line-height: 1.7; margin-bottom: 2.5rem; max-width: 480px; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold); color: var(--deep); padding: 0.85rem 2rem;
+    border: none; border-radius: 2px; font-family: 'Jost', sans-serif;
+    font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase;
+    font-weight: 600; cursor: pointer; transition: all 0.3s; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,147,58,0.3); }
+  .btn-outline {
+    background: transparent; color: var(--gold-light); padding: 0.85rem 2rem;
+    border: 1px solid rgba(201,147,58,0.5); border-radius: 2px;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.8rem; letter-spacing: 0.12em; text-transform: uppercase;
+    font-weight: 500; cursor: pointer; transition: all 0.3s; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+  }
+  .btn-outline:hover { background: rgba(201,147,58,0.1); border-color: var(--gold-light); }
+
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 3rem; z-index: 2;
+    display: flex; align-items: center; gap: 0.8rem;
+    color: rgba(245,230,200,0.5); font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+  }
+  .hero-scroll::before {
+    content: ''; width: 40px; height: 1px; background: rgba(201,147,58,0.5);
+    animation: scrollLine 2s ease-in-out infinite alternate;
+  }
+  @keyframes scrollLine { from { width: 20px; } to { width: 50px; } }
+
+  /* ─── SECTIONS ─── */
+  section { padding: 7rem 3rem; }
+
+  .section-label {
+    font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.8rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .section-label::before { content: ''; width: 30px; height: 1px; background: var(--gold); }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700; color: var(--bark); line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  .section-title em { color: var(--gold); font-style: italic; }
+  .section-sub {
+    color: var(--muted); font-size: 0.95rem; line-height: 1.7; max-width: 580px;
+    margin-bottom: 3rem;
+  }
+
+  /* ─── ABOUT STRIP ─── */
+  .about-strip {
+    background: var(--deep); padding: 3rem;
+    display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;
+    border-top: 3px solid var(--gold);
+  }
+  .about-stat { text-align: center; }
+  .about-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem; font-weight: 700; color: var(--gold-light); line-height: 1;
+  }
+  .about-stat-label { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,230,200,0.6); margin-top: 0.3rem; }
+
+  /* ─── LODGING ─── */
+  .lodging { background: var(--warm); }
+  .lodging-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .room-types { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem; }
+  .room-chip {
+    background: #fff; border: 1px solid rgba(201,147,58,0.2);
+    border-radius: 4px; padding: 1rem; text-align: center;
+    transition: all 0.3s; cursor: default;
+  }
+  .room-chip:hover { border-color: var(--gold); box-shadow: 0 4px 16px rgba(201,147,58,0.15); transform: translateY(-2px); }
+  .room-chip-icon { font-size: 1.5rem; margin-bottom: 0.4rem; }
+  .room-chip-name { font-size: 0.8rem; font-weight: 600; color: var(--bark); letter-spacing: 0.05em; }
+
+  .amenity-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+  .amenity-list li {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-size: 0.88rem; color: var(--muted);
+  }
+  .amenity-list li::before { content: '✓'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+
+  .room-gallery { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 200px 200px; gap: 8px; border-radius: 4px; overflow: hidden; }
+  .room-gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+  .room-gallery .big { grid-row: span 2; }
+  .room-gallery img:hover { transform: scale(1.04); }
+
+  /* ─── DINING ─── */
+  .dining { background: var(--cream); }
+  .dining-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .cuisine-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.5rem; }
+  .tag {
+    background: rgba(201,147,58,0.1); border: 1px solid rgba(201,147,58,0.3);
+    color: var(--rust); padding: 0.3rem 0.9rem; border-radius: 20px;
+    font-size: 0.8rem; font-weight: 500;
+  }
+  .dining-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  .dining-feature {
+    display: flex; gap: 0.8rem; align-items: flex-start;
+  }
+  .df-icon {
+    width: 36px; height: 36px; background: rgba(201,147,58,0.1);
+    border-radius: 4px; display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .df-text h4 { font-size: 0.82rem; font-weight: 600; color: var(--bark); margin-bottom: 0.2rem; }
+  .df-text p { font-size: 0.78rem; color: var(--muted); line-height: 1.4; }
+
+  .food-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; border-radius: 4px; overflow: hidden; }
+  .food-gallery img { width: 100%; height: 160px; object-fit: cover; transition: transform 0.5s; }
+  .food-gallery .wide { grid-column: span 2; height: 200px; }
+  .food-gallery img:hover { transform: scale(1.04); }
+
+  /* ─── GALLERY ─── */
+  .gallery-section { background: var(--deep); }
+  .gallery-section .section-title { color: var(--gold-light); }
+  .gallery-section .section-label { color: var(--gold); }
+  .gallery-section .section-sub { color: rgba(245,230,200,0.6); }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 200px 200px;
+    gap: 8px;
+  }
+  .gallery-item { overflow: hidden; position: relative; cursor: pointer; }
+  .gallery-item.tall { grid-row: span 2; }
+  .gallery-item.wide { grid-column: span 2; }
+  .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+  .gallery-item:hover img { transform: scale(1.08); }
+  .gallery-item::after {
+    content: attr(data-label);
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(26,14,5,0.85));
+    color: var(--gold-pale); font-size: 0.75rem; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 1.5rem 0.8rem 0.6rem;
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .gallery-item:hover::after { opacity: 1; }
+
+  /* ─── LOCATION ─── */
+  .location { background: var(--warm); }
+  .location-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start; }
+  .location-card {
+    background: #fff; border-radius: 4px; overflow: hidden;
+    box-shadow: 0 8px 32px rgba(46,26,14,0.1);
+  }
+  .location-info { padding: 2rem; }
+  .info-row { display: flex; gap: 1rem; margin-bottom: 1.2rem; align-items: flex-start; }
+  .info-icon { font-size: 1.2rem; flex-shrink: 0; width: 36px; }
+  .info-text h4 { font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 0.2rem; }
+  .info-text p { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
+  .map-container {
+    width: 100%; height: 380px; border-radius: 4px; overflow: hidden;
+    box-shadow: 0 8px 32px rgba(46,26,14,0.15);
+    border: 2px solid rgba(201,147,58,0.2);
+  }
+  .map-container iframe { width: 100%; height: 100%; border: none; }
+
+  /* ─── CONTACT ─── */
+  .contact { background: var(--cream); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; }
+  .phone-cards { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; }
+  .phone-card {
+    background: var(--warm); border: 1px solid rgba(201,147,58,0.2);
+    border-radius: 4px; padding: 1.2rem 1.5rem;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: all 0.3s;
+  }
+  .phone-card:hover { border-color: var(--gold); box-shadow: 0 4px 16px rgba(201,147,58,0.15); }
+  .phone-info { display: flex; align-items: center; gap: 1rem; }
+  .phone-avatar { width: 40px; height: 40px; background: rgba(201,147,58,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+  .phone-num { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 700; color: var(--bark); }
+  .phone-label { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; }
+  .call-btn {
+    background: var(--gold); color: var(--deep); padding: 0.5rem 1.2rem;
+    border-radius: 2px; font-size: 0.75rem; letter-spacing: 0.1em;
+    text-transform: uppercase; font-weight: 600; text-decoration: none;
+    transition: all 0.3s;
+  }
+  .call-btn:hover { background: var(--gold-light); }
+
+  .contact-form { background: var(--deep); border-radius: 4px; padding: 2.5rem; }
+  .contact-form h3 { font-family: 'Cormorant Garamond', serif; color: var(--gold-light); font-size: 1.6rem; margin-bottom: 0.5rem; }
+  .contact-form p { color: rgba(245,230,200,0.5); font-size: 0.85rem; margin-bottom: 1.8rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label { display: block; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(245,230,200,0.5); margin-bottom: 0.4rem; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%; background: rgba(255,255,255,0.06); border: 1px solid rgba(201,147,58,0.2);
+    border-radius: 2px; padding: 0.7rem 1rem; color: #fff; font-family: 'Jost', sans-serif; font-size: 0.88rem;
+    outline: none; transition: border-color 0.3s;
+  }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
+  .form-group select option { background: var(--deep); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .submit-btn {
+    width: 100%; background: var(--gold); color: var(--deep); padding: 0.9rem;
+    border: none; border-radius: 2px; font-family: 'Jost', sans-serif;
+    font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600;
+    cursor: pointer; transition: all 0.3s; margin-top: 0.5rem;
+  }
+  .submit-btn:hover { background: var(--gold-light); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--deep); color: rgba(245,230,200,0.6);
+    padding: 3rem; text-align: center;
+    border-top: 1px solid rgba(201,147,58,0.2);
+  }
+  footer .f-logo { font-family: 'Cormorant Garamond', serif; color: var(--gold-light); font-size: 1.6rem; font-weight: 700; margin-bottom: 0.5rem; }
+  footer p { font-size: 0.82rem; line-height: 1.7; }
+  footer .f-divider { width: 40px; height: 1px; background: var(--gold); margin: 1.2rem auto; }
+  footer .f-tagline { font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: rgba(245,230,200,0.4); }
+
+  /* ─── MOBILE NAV ─── */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(26,14,5,0.97); padding: 1.5rem; gap: 1.2rem; border-top: 1px solid rgba(201,147,58,0.2); }
+    nav .nav-cta { display: none; }
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    section { padding: 4rem 1.5rem; }
+    .hero-content { padding: 0 1.5rem; padding-top: 6rem; }
+    .hero-img-collage { display: none; }
+    .hero-overlay { background: linear-gradient(rgba(26,14,5,0.75), rgba(26,14,5,0.9)); }
+    .lodging-grid, .dining-grid, .location-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .gallery-item.tall { grid-row: span 1; }
+    .gallery-item.wide { grid-column: span 2; }
+    .form-row { grid-template-columns: 1fr; }
+    .about-strip { padding: 2rem 1.5rem; }
+    .room-gallery { grid-template-rows: 160px 160px; }
+    .amenity-list { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 500px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+    .gallery-item.wide { grid-column: span 1; }
+    .dining-features { grid-template-columns: 1fr; }
+    .room-types { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* Scroll animation */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">Saiba<span>Family Resto, Bar & Lodging</span></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#lodging">Rooms</a></li>
+    <li><a href="#dining">Dining</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#location">Location</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:9921521881" class="nav-cta">Book Now</a>
+  <div class="hamburger" id="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-img-collage">
+    <div class="img-cell">
+      <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=800&q=80" alt="Luxury Room">
+    </div>
+    <div class="img-cell">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Restaurant">
+    </div>
+    <div class="img-cell">
+      <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?w=600&q=80" alt="Bar">
+    </div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Est. Pirangut · Pune</div>
+    <h1>Saiba <em>Family</em><br>Resto, Bar &<br>Lodging</h1>
+    <div class="hero-divider"></div>
+    <p class="hero-tagline">"Comfortable Stay, Delicious Food, and Relaxing Ambience – All in One Place"</p>
+    <p class="hero-desc">Nestled in the serene surroundings of Pirangut, Saiba offers an exceptional blend of warm hospitality, authentic cuisine, and comfortable lodging — a true home away from home.</p>
+    <div class="hero-btns">
+      <a href="tel:9921521881" class="btn-primary">🏨 Book Now</a>
+      <a href="#dining" class="btn-outline">🍽 View Menu</a>
+      <a href="#contact" class="btn-outline">📞 Contact Us</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll to explore</div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="about-strip">
+  <div class="about-stat">
+    <div class="about-stat-num">3+</div>
+    <div class="about-stat-label">Room Categories</div>
+  </div>
+  <div class="about-stat">
+    <div class="about-stat-num">3</div>
+    <div class="about-stat-label">Cuisine Styles</div>
+  </div>
+  <div class="about-stat">
+    <div class="about-stat-num">24/7</div>
+    <div class="about-stat-label">Room Service</div>
+  </div>
+  <div class="about-stat">
+    <div class="about-stat-num">100%</div>
+    <div class="about-stat-label">Hygienic Kitchen</div>
+  </div>
+  <div class="about-stat">
+    <div class="about-stat-num">∞</div>
+    <div class="about-stat-label">Warm Hospitality</div>
+  </div>
+</div>
+
+<!-- LODGING -->
+<section class="lodging reveal" id="lodging">
+  <div class="lodging-grid">
+    <div>
+      <div class="section-label">Accommodation</div>
+      <h2 class="section-title">Stay in <em>Comfort</em><br>& Style</h2>
+      <p class="section-sub">Choose from our thoughtfully designed rooms, crafted to make every guest feel at home. Whether a short stopover or a leisurely retreat, we have the perfect room for you.</p>
+
+      <div class="room-types">
+        <div class="room-chip"><div class="room-chip-icon">❄️</div><div class="room-chip-name">AC Rooms</div></div>
+        <div class="room-chip"><div class="room-chip-icon">🌿</div><div class="room-chip-name">Non-AC Rooms</div></div>
+        <div class="room-chip"><div class="room-chip-icon">👑</div><div class="room-chip-name">Deluxe Rooms</div></div>
+        <div class="room-chip"><div class="room-chip-icon">🌅</div><div class="room-chip-name">Family Rooms</div></div>
+      </div>
+
+      <ul class="amenity-list">
+        <li>24-hour Room Service</li>
+        <li>Morning Breakfast Included</li>
+        <li>Hot & Cold Water 24/7</li>
+        <li>Free High-Speed Wi-Fi</li>
+        <li>Round-the-Clock Security</li>
+        <li>Spacious Car Parking</li>
+        <li>Well-Maintained Rooms</li>
+        <li>Daily Housekeeping</li>
+      </ul>
+
+      <div style="margin-top:2rem;">
+        <a href="tel:9921521881" class="btn-primary">Book a Room</a>
+      </div>
+    </div>
+    <div>
+      <div class="room-gallery">
+        <img class="big" src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80" alt="Deluxe Room">
+        <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=400&q=80" alt="Standard Room">
+        <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?w=400&q=80" alt="Room Bathroom">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DINING -->
+<section class="dining reveal" id="dining">
+  <div class="dining-grid">
+    <div>
+      <div class="food-gallery">
+        <img class="wide" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=700&q=80" alt="Restaurant Interior">
+        <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&q=80" alt="Indian Food">
+        <img src="https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=400&q=80" alt="Thali">
+        <img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=400&q=80" alt="Burger">
+      </div>
+    </div>
+    <div>
+      <div class="section-label">Restaurant & Bar</div>
+      <h2 class="section-title">Flavours That <em>Delight</em><br>the Soul</h2>
+      <p class="section-sub">From authentic Maharashtrian thalis to North Indian delicacies and Chinese favourites, every meal at Saiba is prepared with love and the finest ingredients.</p>
+
+      <div class="cuisine-tags">
+        <span class="tag">🌾 Maharashtrian</span>
+        <span class="tag">🫓 Punjabi</span>
+        <span class="tag">🥢 Chinese</span>
+        <span class="tag">🥬 Veg Specials</span>
+        <span class="tag">🍗 Non-Veg</span>
+        <span class="tag">🍷 Bar</span>
+      </div>
+
+      <div class="dining-features">
+        <div class="dining-feature">
+          <div class="df-icon">🍽️</div>
+          <div class="df-text"><h4>Family Dining</h4><p>Separate section for families with a comfortable, private setting</p></div>
+        </div>
+        <div class="dining-feature">
+          <div class="df-icon">🌿</div>
+          <div class="df-text"><h4>Open Terrace</h4><p>Garden experience with fresh air and scenic surroundings</p></div>
+        </div>
+        <div class="dining-feature">
+          <div class="df-icon">🥃</div>
+          <div class="df-text"><h4>Full Bar</h4><p>Domestic & imported liquor in a relaxing, peaceful environment</p></div>
+        </div>
+        <div class="dining-feature">
+          <div class="df-icon">✅</div>
+          <div class="df-text"><h4>Hygienic Kitchen</h4><p>Tasty, fresh, and hygienically prepared meals every time</p></div>
+        </div>
+        <div class="dining-feature">
+          <div class="df-icon">🅿️</div>
+          <div class="df-text"><h4>Ample Parking</h4><p>Dedicated parking for dining guests and hotel residents</p></div>
+        </div>
+        <div class="dining-feature">
+          <div class="df-icon">😌</div>
+          <div class="df-text"><h4>Peaceful Ambience</h4><p>Relaxed, welcoming atmosphere perfect for any occasion</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section reveal" id="gallery">
+  <div style="text-align:center; margin-bottom:3rem;">
+    <div class="section-label" style="justify-content:center;">Our Space</div>
+    <h2 class="section-title" style="color:var(--gold-light);">A Glimpse of <em>Saiba</em></h2>
+    <p class="section-sub" style="margin:0 auto; color:rgba(245,230,200,0.55);">Every corner of Saiba is designed to make you feel welcome, comfortable, and at ease.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item tall" data-label="Deluxe Suite">
+      <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=500&q=80" alt="Room">
+    </div>
+    <div class="gallery-item wide" data-label="Restaurant Hall">
+      <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=700&q=80" alt="Dining">
+    </div>
+    <div class="gallery-item" data-label="Standard Room">
+      <img src="https://images.unsplash.com/photo-1589552025781-e2df7b81ebc8?w=400&q=80" alt="Room">
+    </div>
+    <div class="gallery-item" data-label="Bar Lounge">
+      <img src="https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=400&q=80" alt="Bar">
+    </div>
+    <div class="gallery-item wide" data-label="Exterior & Garden">
+      <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=700&q=80" alt="Exterior">
+    </div>
+    <div class="gallery-item" data-label="Terrace View">
+      <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=400&q=80" alt="Terrace">
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="location reveal" id="location">
+  <div style="text-align:center; margin-bottom:3rem;">
+    <div class="section-label" style="justify-content:center;">Find Us</div>
+    <h2 class="section-title">Easily <em>Accessible</em>,<br>Centrally Located</h2>
+    <p class="section-sub" style="margin:0 auto;">Situated in the heart of Pirangut, right in front of Bank of Baroda — easy to find, easy to reach.</p>
+  </div>
+  <div class="location-grid">
+    <div class="location-card">
+      <div class="location-info">
+        <div class="info-row">
+          <div class="info-icon">📍</div>
+          <div class="info-text">
+            <h4>Address</h4>
+            <p>In front of Bank of Baroda,<br>Pirangut, Tal. Mulshi,<br>Dist. Pune – 412115</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">📞</div>
+          <div class="info-text">
+            <h4>Phone</h4>
+            <p><a href="tel:9921521881" style="color:var(--gold);text-decoration:none;">+91 99215 21881</a><br>
+            <a href="tel:9096302304" style="color:var(--gold);text-decoration:none;">+91 90963 02304</a><br>
+            <a href="tel:9881070218" style="color:var(--gold);text-decoration:none;">+91 98810 70218</a></p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">🕐</div>
+          <div class="info-text">
+            <h4>Hours</h4>
+            <p>Restaurant: 7:00 AM – 11:00 PM<br>Bar: 11:00 AM – 11:00 PM<br>Reception: Open 24 Hours</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <div class="info-icon">🗺️</div>
+          <div class="info-text">
+            <h4>Accessibility</h4>
+            <p>20 mins from Pune city center via Paud Road. Easy access from Lavasa and Mulshi Dam routes.</p>
+          </div>
+        </div>
+        <a href="https://maps.google.com/?q=Pirangut,+Tal.+Mulshi,+Dist.+Pune+412115" target="_blank" class="btn-primary" style="display:inline-flex; margin-top:0.5rem;">Get Directions 🧭</a>
+      </div>
+    </div>
+    <div class="map-container">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.027264!2d73.6833!3d18.5137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf3100000001%3A0x0!2sPirangut%2C+Maharashtra+412115!5e0!3m2!1sen!2sin!4v1234567890"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact reveal" id="contact">
+  <div style="text-align:center; margin-bottom:3rem;">
+    <div class="section-label" style="justify-content:center;">Get In Touch</div>
+    <h2 class="section-title">We'd Love to <em>Hear</em> From You</h2>
+    <p class="section-sub" style="margin:0 auto;">Call us directly or drop us a message — we'll get back to you promptly to assist with bookings and inquiries.</p>
+  </div>
+  <div class="contact-grid">
+    <div>
+      <h3 style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--bark); margin-bottom:1.2rem;">📞 Call Us Directly</h3>
+      <div class="phone-cards">
+        <div class="phone-card">
+          <div class="phone-info">
+            <div class="phone-avatar">📱</div>
+            <div>
+              <div class="phone-num">+91 99215 21881</div>
+              <div class="phone-label">Primary Contact</div>
+            </div>
+          </div>
+          <a href="tel:9921521881" class="call-btn">Call</a>
+        </div>
+        <div class="phone-card">
+          <div class="phone-info">
+            <div class="phone-avatar">📱</div>
+            <div>
+              <div class="phone-num">+91 90963 02304</div>
+              <div class="phone-label">Reservations</div>
+            </div>
+          </div>
+          <a href="tel:9096302304" class="call-btn">Call</a>
+        </div>
+        <div class="phone-card">
+          <div class="phone-info">
+            <div class="phone-avatar">📱</div>
+            <div>
+              <div class="phone-num">+91 98810 70218</div>
+              <div class="phone-label">Restaurant & Bar</div>
+            </div>
+          </div>
+          <a href="tel:9881070218" class="call-btn">Call</a>
+        </div>
+      </div>
+      <div style="background:var(--warm); border-radius:4px; padding:1.5rem; border-left:3px solid var(--gold);">
+        <p style="font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:var(--bark); font-style:italic;">"At Saiba, every guest is family. We look forward to making your stay truly memorable."</p>
+        <p style="font-size:0.78rem; color:var(--muted); margin-top:0.5rem;">— The Saiba Family</p>
+      </div>
+    </div>
+    <div class="contact-form">
+      <h3>Send Us a Message</h3>
+      <p>Fill in your details and we'll get back to you within the hour.</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Full Name">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+91 00000 00000">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Inquiry Type</label>
+        <select>
+          <option>Room Booking</option>
+          <option>Restaurant Reservation</option>
+          <option>Bar & Events</option>
+          <option>General Inquiry</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Check-In Date</label>
+          <input type="date">
+        </div>
+        <div class="form-group">
+          <label>Number of Guests</label>
+          <input type="number" placeholder="2" min="1">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Your Message</label>
+        <textarea placeholder="Tell us how we can help..."></textarea>
+      </div>
+      <button class="submit-btn" onclick="handleSubmit(event)">Send Inquiry ✉️</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">Saiba Family Resto, Bar & Lodging</div>
+  <div class="f-divider"></div>
+  <p>In front of Bank of Baroda, Pirangut, Tal. Mulshi, Dist. Pune – 412115</p>
+  <p style="margin-top:0.4rem;">
+    <a href="tel:9921521881" style="color:var(--gold-light);text-decoration:none;">+91 99215 21881</a> &nbsp;·&nbsp;
+    <a href="tel:9096302304" style="color:var(--gold-light);text-decoration:none;">+91 90963 02304</a> &nbsp;·&nbsp;
+    <a href="tel:9881070218" style="color:var(--gold-light);text-decoration:none;">+91 98810 70218</a>
+  </p>
+  <div class="f-divider"></div>
+  <p class="f-tagline">"Comfortable Stay · Delicious Food · Relaxing Ambience"</p>
+  <p style="margin-top:1.2rem; font-size:0.72rem; opacity:0.4;">© 2025 Saiba Family Resto, Bar & Lodging. All rights reserved.</p>
+</footer>
+
+<script>
+  // Nav toggle
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Nav scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    nav.style.background = window.scrollY > 80 ? 'rgba(26,14,5,0.97)' : 'rgba(26,14,5,0.85)';
+  });
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault ? e.preventDefault() : null;
+    const btn = document.querySelector('.submit-btn');
+    btn.textContent = '✓ Message Sent! We\'ll call you soon.';
+    btn.style.background = '#4A7C3F';
+    btn.disabled = true;
+  }
+</script>
+</body>
+</html>
